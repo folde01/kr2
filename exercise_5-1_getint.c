@@ -10,7 +10,7 @@ int bufp = 0;
 main() {
   int n, array[SIZE], getint(int *);
   for (n = 0; n < SIZE; n++)
-    array[n] = '\0';
+    array[n] = -999;
 
   for (n = 0; n < SIZE && getint(&array[n]) != EOF; n++)
     ;
@@ -26,7 +26,7 @@ int getint(int *pn) {
     ;
 
   if (!isdigit(c) && c != EOF && c != '-' && c != '+') {
-    ungetch(c);
+    //ungetch(c);
     return 0;
   }
 
@@ -34,6 +34,11 @@ int getint(int *pn) {
   
   if (c == '+' || c == '-')
     c = getch();
+
+  if (!isdigit(c)) {
+    ungetch(c);
+    return 0;
+  }
 
   for (*pn = 0; isdigit(c); c = getch())
     *pn = 10 * *pn + (c - '0');

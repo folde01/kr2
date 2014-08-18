@@ -96,8 +96,15 @@ strncpy(s,t,n) copies at most n characters of t to s. Full descriptions are in A
 /* char *strncpy(s, ct, n) copy at most n characters of string ct to s; return s. Pad with '\0''s if ct has fewer than n characters */
 char *strncpy2(char *dest, char *src, int n)  { 
   char *r = dest;
-  while ((*dest = *src) != '\0' && n > 0)   
+  while ((*dest = *src) != '\0' && n > 0) { 
+    printf("yoda %c\n", *src); 
+    --n, ++dest, ++src;
+  }
+  while (n > 0) { 
+    printf("yoda\n"); 
+    *dest++ = '\0';
     --n;
+  }
   return r;
 }
 
@@ -120,10 +127,11 @@ main() {
   int n;
 
   //s[10] = "abc"; char *ct = "ef"; int n = 1;
-  char s[] = "abc"; ct = "ef"; n = 1;
+  char s[] = "aaaaaaaaaa"; ct = "kf"; n = 4;
   printf("%s\n", s); 
   printf("%d\n", strlen(s)); 
   printf("%s\n", strncpy2(s, ct, n)); // output: efc
+  printf("%d\n", strlen(s)); 
 
   //char s[10] = "abc"; char *ct = "ef"; int n = 1;
   //printf("%s\n", strncpy2(s, ct, n)); // output: efc

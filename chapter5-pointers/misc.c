@@ -110,12 +110,49 @@ char *strncpy2(char *dest, char *src, int n)  {
 }
 
 /* char *strncat(s,ct,n) concatenate at most n characters of string ct to string s, terminate s with '\0'; return s. */
+char *strncat2(char *dest, char *src, int n) { 
+  char *r = dest;
+  //while (*dest++ != '\0') 
+  //  ;
+  while (*dest != '\0') 
+    dest++;
+  while (n-- > 0) 
+    *dest++ = *src++; 
+  return r;
+}
 
 /* int strncmp(cs,ct,n) compare at most n characters of string cs to string ct; return <0 if cs<ct, 0 if cs==ct, or >0 if cs>ct.  */
 
 main() { 
 
-  // 5-4:
+  ////////////////
+  // 5-5 strncat:
+  ///////////////
+
+  char s[4] = "abc"; 
+
+  printf("s: %s\n", s);
+  int lens = strlen(s);
+  printf("strlen(s): %d\n", lens);
+  char t[lens + 1];
+  int lent = strlen(t);
+  printf("strlen(t): %d\n", lent);
+  strncpy(t, s, lens + 1);
+  lent = strlen(t);
+  printf("strlen(t): %d\n", lent);
+  printf("t: %s\n", t);
+
+  int n = 4;
+  char *src = "1234";
+
+  printf("strncat2(%s, %s, %d): %s\n", t, src, n, strncat2(s, src, n));
+
+
+  /*
+
+  ////////////////
+  // 5-5 strncpy:
+  ///////////////
 
   int n;
 
@@ -133,9 +170,10 @@ main() {
 
   printf("\n-\n\n");
 
-  /*
 
-  // 5-3:
+  ////////////////
+  // 5-4 strend:
+  ////////////////
 
 
   char *s = "abcdef";

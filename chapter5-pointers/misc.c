@@ -122,8 +122,25 @@ char *strncat2(char *dest, char *src, int n) {
 }
 
 /* int strncmp(cs,ct,n) compare at most n characters of string cs to string ct; return <0 if cs<ct, 0 if cs==ct, or >0 if cs>ct.  */
+int strncmp2(char *cs, char *ct, int n) { 
+  while (*cs++ == *ct++ && n-- > 0)
+    ;
+  return *cs - *ct;
+}
 
 main() { 
+
+  ////////////////
+  // 5-5 strncmp:
+  ///////////////
+
+  
+  char cs[] = "abcdefg"; 
+  char ct[] = "abcdeeg"; 
+  int n = 7; 
+  printf("strncmp(%s, %s, %d): %d\n", cs, ct, n, strncmp(cs, ct, n));
+
+  /*
 
   ////////////////
   // 5-5 strncat:
@@ -148,7 +165,6 @@ main() {
   printf("strncat2(%s, %s, %d): %s\n", t, src, n, strncat2(s, src, n));
 
 
-  /*
 
   ////////////////
   // 5-5 strncpy:

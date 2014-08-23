@@ -96,12 +96,13 @@ strncpy(s,t,n) copies at most n characters of t to s. Full descriptions are in A
 /* char *strncpy(s, ct, n) copy at most n characters of string ct to s; return s. Pad with '\0''s if ct has fewer than n characters */
 char *strncpy2(char *dest, char *src, int n)  { 
   char *r = dest;
-  while ((*dest = *src) != '\0' && n > 0) { 
-    printf("yoda %c\n", *src); 
+  //while ((*dest = *src) != '\0' && n > 0) { 
+  while (*src != '\0' && n > 0) { 
+    *dest = *src;
+    //printf("n: %d\n", n);
     --n, ++dest, ++src;
   }
   while (n > 0) { 
-    printf("yoda\n"); 
     *dest++ = '\0';
     --n;
   }
@@ -116,29 +117,26 @@ main() {
 
   // 5-4:
 
-  //char s[10] = "abc"; char *ct = "ef"; int n = 1;
-  //printf("%s\n", strncpy(s, ct, n)); // output: ebc
-
-  //char s[10] = "abc"; char *ct = "ef"; int n = 1;
-  //printf("%s\n", strncpy2(s, ct, n)); // output: ebc
-
-  //char s[10];
-  char *ct;
   int n;
 
-  //s[10] = "abc"; char *ct = "ef"; int n = 1;
-  char s[] = "aaaaaaaaaa"; ct = "kf"; n = 4;
-  printf("%s\n", s); 
-  printf("%d\n", strlen(s)); 
-  printf("%s\n", strncpy2(s, ct, n)); // output: efc
-  printf("%d\n", strlen(s)); 
+  printf("\n-\n\n");
 
-  //char s[10] = "abc"; char *ct = "ef"; int n = 1;
-  //printf("%s\n", strncpy2(s, ct, n)); // output: efc
+  char s2[] = "aaaaaaaaaa";
+  printf("s2: %s\n", s2);
+  int lens2 = strlen(s2);
+  printf("strlen(s2): %d\n", lens2);
+  char t2[lens2 + 1];
+  strncpy(t2, s2, lens2 + 1);
+  char *ct = "kfckfc"; n = 4;
+  //printf("strncpy(%s, %s, %d): %s\n", t2, ct, n, strncpy(s2, ct, n));
+  printf("strncpy2(%s, %s, %d): %s\n", t2, ct, n, strncpy2(s2, ct, n));
+
+  printf("\n-\n\n");
 
   /*
 
   // 5-3:
+
 
   char *s = "abcdef";
   char *t = "cdef";

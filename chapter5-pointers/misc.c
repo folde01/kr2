@@ -128,7 +128,34 @@ int strncmp2(char *cs, char *ct, int n) {
   return *cs - *ct;
 }
 
+/* getline: read a line into s, return length */
+
+int getline2(char *s, int lim) { 
+  char *t = s;
+  int c;
+  while (s-t<lim && (c=getchar()) != EOF && c!='\n') { 
+    //printf("c: %c\n", c);
+    *s++ = c;
+  }
+  if (c == '\n') 
+    *s++ = c;
+  *s = '\0';
+  return s-t;
+}
+  
 main() { 
+
+  ////////////////
+  // 5-6 getline:
+  ///////////////
+
+  int lim = 80;
+  //char *s;
+  char s[lim]; 
+  printf("getline2: %d\n", getline2(s, lim));
+  
+  
+  /*
 
   ////////////////
   // 5-5 strncmp:
@@ -140,7 +167,6 @@ main() {
   int n = 7; 
   printf("strncmp(%s, %s, %d): %d\n", cs, ct, n, strncmp(cs, ct, n));
 
-  /*
 
   ////////////////
   // 5-5 strncat:

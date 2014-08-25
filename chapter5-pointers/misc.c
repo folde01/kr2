@@ -142,6 +142,7 @@ int getline2(char *s, int lim) {
   *s = '\0';
   return s-t;
 }
+
   
 main() { 
 

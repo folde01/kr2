@@ -1,6 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
 
+
 int getch(void);
 void ungetch(int);
 int SIZE = 10;
@@ -19,6 +20,7 @@ int getint(int *pn) {
   *pn = 1;
   return 1;
 }
+
 
 /*
 int getint(int *pn) { 

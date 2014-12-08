@@ -4,7 +4,7 @@
 int getch(void);
 void ungetch(int);
 /* int SIZE = 10; */
-int SIZE = 1;
+int SIZE = 4;
 
 main() { 
   int n, array[SIZE], getint(int *);
@@ -39,6 +39,12 @@ int getint(int *pn) {
   if (c == '+' || c == '-') { 
     c = getch();
   }
+  if (!isdigit(c)) { 
+    ungetch(c);
+    return 0;
+  }
+
+
   for (*pn = 0; isdigit(c); c = getch())
     *pn = 10 * *pn + (c - '0');
   *pn *= sign;

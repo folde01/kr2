@@ -7,25 +7,26 @@ void ungetch(int);
 int SIZE = 4;
 
 main() { 
-  int n, array[SIZE], getint(int *);
+  int n; 
+  float array[SIZE], getfloat(int *); 
 
-  for (n = 0; n < SIZE && (array[n] = -999) && getint(&array[n]) != EOF; n++)
+  for (n = 0; n < SIZE && (array[n] = -999) && getfloat(&array[n]) != EOF; n++)
     ;
 
   for (n = 0; n < SIZE; n++)
-    printf("%d ", array[n]); 
+    printf("%f ", array[n]); 
 
 }
 
 /*
-int getint(int *pn) { 
+int getfloat(float *pn) { 
   *pn = 1;
   return 1;
 }
 */
 
 
-int getint(int *pn) { 
+int getfloat(float *pn) { 
   int c, sign;
 
   while (isspace(c = getch()))
@@ -47,6 +48,13 @@ int getint(int *pn) {
 
   for (*pn = 0; isdigit(c); c = getch())
     *pn = 10 * *pn + (c - '0');
+  if (c == '.')
+    int p = 1;
+    for (; isdigit(c); c = getch()) { 
+      p *= 10;
+      *pn += (c - '0') / p;
+    }
+
   *pn *= sign;
   if (c != EOF)
     ungetch(c);

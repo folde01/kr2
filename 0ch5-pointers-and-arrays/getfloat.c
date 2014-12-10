@@ -7,8 +7,8 @@ void ungetch(int);
 int SIZE = 4;
 
 main() { 
-  int n; 
-  float array[SIZE], getfloat(int *); 
+  int n, getfloat(float *); 
+  float array[SIZE];
 
   for (n = 0; n < SIZE && (array[n] = -999) && getfloat(&array[n]) != EOF; n++)
     ;
@@ -48,12 +48,13 @@ int getfloat(float *pn) {
 
   for (*pn = 0; isdigit(c); c = getch())
     *pn = 10 * *pn + (c - '0');
-  if (c == '.')
+  if (c == '.') { 
     int p = 1;
     for (; isdigit(c); c = getch()) { 
       p *= 10;
       *pn += (c - '0') / p;
     }
+  }
 
   *pn *= sign;
   if (c != EOF)

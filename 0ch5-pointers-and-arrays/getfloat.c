@@ -46,13 +46,18 @@ int getfloat(float *pn) {
     return 0;
   }
 
-  for (*pn = 0; isdigit(c); c = getch())
+  for (*pn = 0; isdigit(c); c = getch()) { 
+    printf("yoda\n");
     *pn = 10 * *pn + (c - '0');
+  }
+  //c = getch();
   if (c == '.') { 
-    int p = 1;
-    for (; isdigit(c); c = getch()) { 
-      p *= 10;
-      *pn += (c - '0') / p;
+    float p = 1.0;
+    printf("yoda1\n");
+    while (isdigit(c = getch())) { 
+      printf("yoda2\n");
+      p *= 10.0;
+      *pn += ((c - '0') / p);
     }
   }
 

@@ -19,13 +19,18 @@ int strend2(char *s, char *t)
   printf("END *t: %c *s: %c s: %d s: %s\n", *t, *s, s, s);
 
   int len = 0;
-  while (*t++) ++len; 
+  //while (*t++) ++len; 
+  while (*t) { 
+    ++len;
+    ++t;
+  }
+
   //while (*++t) ++len; 
   printf("len: %d\n", len);
 
   
-  --t; --t;
-  //--t; 
+  //--t; --t;
+  --t; 
   //--s; --s;
   --s;
   //--t; --s;

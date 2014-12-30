@@ -8,21 +8,33 @@
 int strend2(char *s, char *t) 
 { 
 
-  printf("*t: %c *s: %c\n", *t, *s);
-  while (*s++) 
-    printf("YODA *t: %c *s: %c\n", *t, *s);
+  printf("START *t: %c *s: %c s: %d s: %s\n", *t, *s, s, s);
+
+  //while (*s++) { 
+  while (*++s) { 
+    //printf("YODA *t: %c *s: %c s: %d s: %s\n", *t, *s, s, s);
+    printf("YODA *t: %c s: %d s: %s *s: %c\n", *t, s, s, *s);
+  }
+
+  printf("END *t: %c *s: %c s: %d s: %s\n", *t, *s, s, s);
+
   int len = 0;
   while (*t++) ++len; 
+  //while (*++t) ++len; 
   printf("len: %d\n", len);
 
+  
   --t; --t;
-  --s; --s;
+  //--t; 
+  //--s; --s;
+  --s;
+  //--t; --s;
 
   while (len > 0) { 
+  //while (len > 1) { 
     printf("yoda len: %d\n", len);
-    printf("*t: %c *s: %c\n", *t, *s);
-    //if (*--t != *--s) {  // try decrementing elsewhere 
-    if (*t != *s) {  // try decrementing elsewhere 
+    printf("YODA *t: %c *s: %c s: %d s: %s\n", *t, *s, s, s);
+    if (*t != *s) {  
       printf("miss. len: %d\n", len);
       return 0;
     }

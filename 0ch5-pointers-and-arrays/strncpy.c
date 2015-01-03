@@ -10,6 +10,7 @@ char *strncpy2(s, ct, n) {
   while (*ct++)
     *s++ = '\0'
   }
+
 }
 
 

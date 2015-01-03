@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 /* copy at most n characters of string ct to s ; return s . Pad with '\0' characters if ct has fewer than n characters. */
 char *strncpy2(s, ct, n);
 

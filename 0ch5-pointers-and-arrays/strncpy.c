@@ -2,7 +2,16 @@
 #include <string.h>
 
 /* copy at most n characters of string ct to s ; return s . Pad with '\0' characters if ct has fewer than n characters. */
-//char *strncpy2(s, ct, n);
+char *strncpy2(s, ct, n);
+
+char *strncpy2(s, ct, n) { 
+  while (*s++ = *ct++ && n-- > 0)
+    ;
+  while (*ct++)
+    *s++ = '\0'
+  }
+}
+
 
 main() { 
   char s[] = "abcd";
@@ -20,6 +29,5 @@ main() {
     printf("res: %d\n", res);
     ++res;
   }
-
 }
 

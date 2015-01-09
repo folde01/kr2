@@ -6,10 +6,18 @@ cs<ct , 0 if cs==ct , or >0 if cs>ct .*/
 int strncmp2(char *cs, char *ct, int n);
 
 int strncmp2(char *cs, char *ct, int n) { 
-  while (*cs == *ct && n > 0) { 
-    if (*cs < *ct)
-    
+  while (n > 0) { 
+    if (*cs < *ct) { 
+      printf("less\n");
+      return -10;
+    }
+    else if (*cs > *ct) { 
+      printf("more\n");
+      return 10;
+    }
+    cs++, ct++, n--;
   }
+  return 0;
 }
 
 main() { 
@@ -17,7 +25,7 @@ main() {
   char *ct1 = "abc1"; 
   printf("0 ? %d\n", strncmp(cs1, ct1, 3));   
 
-  char *cs2 = "abc0"; 
-  char *ct2 = "abc2"; 
-  printf("0 ? %d\n", strncmp2(cs2, ct2, 3));   
+  char *cs2 = "fbc4"; 
+  char *ct2 = "c2"; 
+  printf("0 ? %d\n", strncmp2(cs2, ct2, 5));   
 }

@@ -33,7 +33,7 @@ main() {
   */
 
   char s3[] = "test3abc";
-  char ct3[] = "hi";
+  char ct3[] = "hii";
   int n3 = 2; 
   char *res3 = strncpy(s3, ct3, n3);
   printf("hist3abc ? %s\n", res3);

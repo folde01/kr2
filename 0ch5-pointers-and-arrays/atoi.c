@@ -17,6 +17,18 @@ int atoi2(char *s) {
   return n;
 }
 
+char[] askfortext(int lim, *char msg) { 
+  printf("%s", msg);
+  char s[lim];
+  int c, i;
+  for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
+    s[i] = c;
+  if (c == '\n')
+    s[i++] = c;
+  s[i] = '\0';
+  return s;
+}
+
 main() { 
   printf("Enter a string of digits: \n");
   int lim = 50;
@@ -28,6 +40,8 @@ main() {
   if (c == '\n')
     s[i++] = c;
   s[i] = '\0';
+
+  //
 
   //int a = atoi(s);
   int a = atoi2(s);

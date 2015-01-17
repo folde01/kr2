@@ -17,34 +17,32 @@ int atoi2(char *s) {
   return n;
 }
 
-char[] askfortext(int lim, *char msg) { 
+char *askfortext(int lim, char *msg) { 
   printf("%s", msg);
-  char s[lim];
+  //char s[lim];
+  char *s;
+  printf("s: %d\n", s);
   int c, i;
-  for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
-    s[i] = c;
-  if (c == '\n')
-    s[i++] = c;
-  s[i] = '\0';
+  for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i) {  // BUG: lim is useless here
+    //s[i] = c;
+    *s = c;
+    s++;
+  printf("s: %d\n", s);
+  }
+  if (c == '\n') { 
+    //s[i++] = c;
+    *s = c;
+    s++;
+  }
+  //s[i] = '\0';
+  *s = '\0';
   return s;
 }
 
 main() { 
-  printf("Enter a string of digits: \n");
+  char msg[] = "Enter a string of digits: \n";
   int lim = 50;
-  char s[lim];
-  int c, i;
-  //while ((c=getchar())!=EOF && c!='\n' && i<lim-1)
-  for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i)
-    s[i] = c;
-  if (c == '\n')
-    s[i++] = c;
-  s[i] = '\0';
-
-  //
-
-  //int a = atoi(s);
-  int a = atoi2(s);
-  printf("a: %d\n", a);
-  
+  char *s;
+  s = askfortext(lim, msg);
+  printf("s: %s\n", s);
 }

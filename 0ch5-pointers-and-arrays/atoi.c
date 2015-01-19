@@ -57,4 +57,5 @@ main() {
   char *s2;
   s2 = askfortext_p(msg, lim);
   printf("s2: %s\n", s2);
+  printf("atoi2: %d\n", atoi2(s2));
 }

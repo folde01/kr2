@@ -7,8 +7,8 @@ int strindex(char s[], char t[])
   for (i = 0; s[i] != '\0'; i++) { 
     for (j=i, k=0; t[k]!='\0' && s[j]==t[k]; j++, k++)
       ;
-      if (k > 0 && t[k] == '\0')
-        return i;
+    if (k > 0 && t[k] == '\0')
+      return i;
   }
   return -1;
 }
@@ -16,9 +16,15 @@ int strindex(char s[], char t[])
 int strindex_p(char *s, char *t) { 
   char *s0 = s;
   char *t0 = t;
-  while (*s++) { 
-    while( 
+  while (s = s0 && *s0 != '\0') { 
+    while(t += (s - s0) && *t == *s) { 
+      ++t;
+    }
+    if (*t == *s && *t == '\0')
+      return s - s0;  
+    ++s0;
   }
+  return -1;
 }
 
 main()
@@ -27,4 +33,9 @@ main()
   char s1[] = "taxi";
   char t1[] = "tax";
   printf("0 ... %d\n", strindex(s1, t1));
+
+  // test 2
+  char *s2 = "taxi";
+  char *t2 = "ax";
+  printf("1 ... %d\n", strindex_p(s2, t2));
 }

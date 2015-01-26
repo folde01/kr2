@@ -26,7 +26,7 @@ int strindex_p(char *s, char *t) {
     }
     if (*t0 == '\0' && t0 > t) { 
       printf("match\n");
-      return s0-s_start;
+      return s-s_start;
     }
     ++s;
   }

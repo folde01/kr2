@@ -13,6 +13,8 @@ int strindex(char s[], char t[])
   return -1;
 }
 int strindex_p(char *s, char *t) {  
+  char *s_start = s;
+  char *t_start = t;
   char *s0;
   char *t0;
   while (*s != '\0') { 
@@ -24,7 +26,7 @@ int strindex_p(char *s, char *t) {
     }
     if (*t0 == '\0' && t0 > t) { 
       printf("match\n");
-      return s0-s;
+      return s0-s_start;
     }
     ++s;
   }

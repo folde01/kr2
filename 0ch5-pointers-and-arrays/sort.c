@@ -21,7 +21,7 @@ void qsort2(char *lineptr[], int left, int right);
 int getline2(char [], int);
 
 /* sort input lines */
-main()
+int main()
 {
   int nlines;
   /* number of input lines read */
@@ -49,8 +49,10 @@ int readlines(char *lineptr[], int maxlines)
 	//while ((len = getline2(line, MAXLEN)) > 0)
 	while ((len = getline2(line, MAXLEN)) > 0)
   	//if (nlines >= maxlines || p = alloc(len) == NULL) 
-  	if (nlines >= maxlines || (p = alloc(len)) == NULL) 
+  	if (nlines >= maxlines || (p = alloc(len)) == NULL) { 
+      printf("readlines: nlines (%d) exceeded maxlines (%d) or p (%p) was NULL\n", nlines, maxlines, p);
     	return -1;
+    }
   	else {
     	line[len-1] = '\0'; /* delete newline */
 	    strcpy2(p, line);
@@ -87,7 +89,7 @@ char *alloc(int n)
 void strcpy2(char *s, char *t)
 //void strcpy2(char *s, char t[])
 {
-  while (*s++ = *t++)
+  while ((*s++ = *t++) != NULL)
     ;
 }
 
